@@ -1,0 +1,11 @@
+* {
+  font-family: monospace;
+  text-decoration: none;
+}
+
+body {
+  background: url('./assets/Title.png'), url('./assets/Background.png');
+  background-size: 30%, cover; /* 10% para la primera imagen y toda la pantalla para la segunda imagen */
+  background-position: top;
+  background-repeat: no-repeat;
+}
