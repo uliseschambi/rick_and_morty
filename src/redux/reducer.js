@@ -7,6 +7,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAVORITE: {
+      // copiar el estado anterior siempre, buena práctica.
       return { ...state, myFavorites: [...state.myFavorites, action.payload] };
     }
     case REMOVE_FAVORITE: {
