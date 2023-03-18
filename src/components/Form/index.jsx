@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Div, FORM, Button } from './style';
+import { DivContainer, DivError, FORM, Button } from './style';
 import validation from './validation';
 
 export const Form = ({ login }) => {
@@ -7,35 +7,35 @@ export const Form = ({ login }) => {
   const [errors, setErrors] = useState({ username: '', password: '' });
 
   const handleInputChange = event => {
-    // pasar el mismo objeto es equivalente a usar una callback
+    // buena práctica utilizar callback en setState ya que se obtiene el newValue de state.
+    // aquí pasar el mismo objeto a setUserData y setErrors es equivalente a usar una callback.
     setUserData({ ...userData, [event.target.name]: event.target.value });
-    handleErrors({ ...errors, [event.target.name]: event.target.value });
-  };
-
-  const handleErrors = state => {
-    // buena práctica usar callback ya que se obtiene el actual value de un state
-    setErrors(validation(state));
+    setErrors(validation({ ...userData, [event.target.name]: event.target.value }));
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     login(userData);
+    setUserData({ username: '', password: '' });
+    setErrors({ username: '', password: '' });
   };
 
   return (
-    <Div>
+    <DivContainer>
       <FORM onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          username
-          <input value={userData.username} onChange={handleInputChange} type="text" name="username"></input>
+        {errors.username ? <DivError>{errors.username}</DivError> : <DivError visibility>hidden</DivError>}
+        <label htmlFor="username">
+          username:
+          <input type="text" name="username" onChange={handleInputChange} value={userData.username}></input>
         </label>
+        {errors.password ? <DivError>{errors.password}</DivError> : <DivError visibility>hidden</DivError>}
         <label htmlFor="password">
-          password
-          <input value={userData.password} onChange={handleInputChange} type="password" name="password"></input>
+          password:
+          <input type="password" name="password" onChange={handleInputChange} value={userData.password}></input>
         </label>
         <Button>LOGIN</Button>
       </FORM>
-    </Div>
+    </DivContainer>
   );
 };
 

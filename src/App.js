@@ -37,7 +37,7 @@ function App() {
       setAccess(true);
       navigate('/home');
     } else {
-      alert('Por favor ingrese un email o contraseña valida.');
+      alert('Por favor ingrese un email o contraseña validos.');
     }
   }
 
