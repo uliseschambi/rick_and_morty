@@ -6,11 +6,14 @@ import style from './Nav.module.css';
 const Nav = ({ onSearch }) => {
   return (
     <nav className={style.nav}>
-      <NavLink to="/about" className={({ isActive }) => (isActive ? style.active : style.about)}>
-        ABOUT
-      </NavLink>
-      <NavLink to="/home" className={({ isActive }) => (isActive ? style.active : style.about)}>
+      <NavLink to="/home" className={({ isActive }) => (isActive ? style.active : style.button)}>
         HOME
+      </NavLink>
+      <NavLink to="/favorites" className={({ isActive }) => (isActive ? style.active : style.button)}>
+        FAVORITES
+      </NavLink>
+      <NavLink to="/about" className={({ isActive }) => (isActive ? style.active : style.button)}>
+        ABOUT
       </NavLink>
       <SearchBar onSearch={onSearch} />
     </nav>

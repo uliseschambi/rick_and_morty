@@ -31,7 +31,7 @@ export const FORM = styled.form`
 export const Button = styled.button`
   background-color: red;
   color: white;
-  border: 2px solid #c6ff68;
+  border: 2px solid #ccff33;
   border-radius: 30px;
   padding: 0.6rem;
   margin: 25px 0px 20px 0px;

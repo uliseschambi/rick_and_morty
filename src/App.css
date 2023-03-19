@@ -9,3 +9,8 @@ body {
   background-position: top;
   background-repeat: no-repeat;
 }
+
+:root {
+  --letter-border: #ccff33;
+  --letter: #34a0a4;
+}

@@ -23,7 +23,7 @@ export const H2 = styled.h2`
 export const Button = styled.button`
   background-color: red;
   color: white;
-  border: 2px solid #c6ff68;
+  border: 2px solid #ccff33;
   border-radius: 30px;
   width: 2rem;
   padding: 0.5rem;
