@@ -1,5 +1,5 @@
 export const ADD_FAVORITE = 'ADD_FAVORITE';
-export const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
+export const DELETE_FAVORITE = 'DELETE_FAVORITE';
 
 export const addFavorite = character => {
   return {
@@ -8,9 +8,9 @@ export const addFavorite = character => {
   };
 };
 
-export const removeFavorite = id => {
+export const deleteFavorite = id => {
   return {
-    type: REMOVE_FAVORITE,
+    type: DELETE_FAVORITE,
     payload: id,
   };
 };
