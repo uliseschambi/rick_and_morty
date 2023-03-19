@@ -12,8 +12,8 @@ function App() {
   const { pathname } = useLocation();
   const [access, setAccess] = useState(false);
   const navigate = useNavigate();
-  const username = 'ulises@gmail.com';
-  const password = 'password';
+  const username = '';
+  const password = '';
 
   const onSearch = id => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)

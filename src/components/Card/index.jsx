@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
-import * as actions from '../../redux';
+import React, { useEffect, useState } from 'react';
+import * as actions from '../../redux/actions';
 import { Span, Img, H2, Button } from './style';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-export function Card({ id, name, species, gender, image, onClose, deleteFavorite, addFavorite }) {
+function Card({ id, name, species, gender, image, onClose, myFavorites, deleteFavorite, addFavorite }) {
   const [isFav, setIsFav] = useState(false);
 
   const handleFavorite = () => {
-    if (isFav) {
-      setIsFav(false);
-      deleteFavorite(id);
-    } else if (!isFav) {
-      setIsFav(true);
-      addFavorite({ id, name, species, gender, image, onClose });
-    }
+    // buena práctica utilizar callback en setState ya que se obtiene el newValue de state inmediatamente para ser utilizado.
+    setIsFav(oldValue => !oldValue);
+    isFav ? deleteFavorite(id) : addFavorite({ id, name, species, gender, image, onClose });
   };
+
+  useEffect(() => {
+    myFavorites.forEach(favorite => setIsFav(favorite.id === id));
+  }, [myFavorites]);
 
   return (
     <Span>
+      {isFav ? <button onClick={handleFavorite}>❤️</button> : <button onClick={handleFavorite}>🤍</button>}
       <Button onClick={() => onClose(id)}>X</Button>
       <Link to={`/detail/${id}`}>
         <H2>{name}</H2>
@@ -30,16 +31,22 @@ export function Card({ id, name, species, gender, image, onClose, deleteFavorite
   );
 }
 
-const mapDispatchToProps = dispatch => {
+function mapStateToProps(state) {
   return {
-    addFavorite: character => {
+    myFavorites: state.myFavorites,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addFavorite: function (character) {
       dispatch(actions.addFavorite(character));
     },
-
-    deleteFavorite: character => {
-      dispatch(actions.deleteFavorite(character));
+    deleteFavorite: function (id) {
+      dispatch(actions.deleteFavorite(id));
     },
   };
-};
+}
 
-export default connect(mapDispatchToProps, null)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
+// connect funciona tanto para componentes funcionales como para componentes de clase.
