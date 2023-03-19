@@ -7,14 +7,13 @@ import About from './components/About';
 import Detail from './components/Detail';
 import Form from './components/Form';
 import Favorites from './components/Favorites';
+import { username, password } from './utils/consts';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const { pathname } = useLocation();
   const [access, setAccess] = useState(false);
   const navigate = useNavigate();
-  const username = '';
-  const password = '';
 
   const onSearch = id => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)

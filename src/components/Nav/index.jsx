@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar';
 import style from './Nav.module.css';
 
 const Nav = ({ onSearch }) => {

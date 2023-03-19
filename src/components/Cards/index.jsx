@@ -5,9 +5,9 @@ export default function Cards(props) {
 
   return (
     <>
-      {/* No pasar el obj completo. key no es una prop. */}
+      {/* No pasar el obj completo. key no es una prop. Usar siempre el id como key para evitar una mala indexación al actualizar*/}
       {characters.map(({ id, name, species, gender, image }, index) => (
-        <Card key={index} id={id} name={name} species={species} gender={gender} image={image} onClose={onClose} />
+        <Card key={id} id={id} name={name} species={species} gender={gender} image={image} onClose={onClose} />
       ))}
     </>
   );

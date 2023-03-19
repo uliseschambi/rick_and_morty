@@ -17,5 +17,3 @@ export default function SearchBar({ onSearch }) {
     </div>
   );
 }
-
-// aplicar los estilos en css modules con classname. Aplicarlos al tag se aplican de forma global.
