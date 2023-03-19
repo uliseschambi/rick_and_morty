@@ -8,6 +8,7 @@
   background-image: linear-gradient(to left, #0c94f5, #b234e9);
   background-blend-mode: hard-light;
   border-radius: 30px;
+  border: 2px solid grey;
 }
 
 .button {

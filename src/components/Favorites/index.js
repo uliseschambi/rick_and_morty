@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
+import { Span } from './style';
 
 class Favorites extends Component {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {}
 
   render() {
     const { myFavorites } = this.props;
@@ -14,10 +13,10 @@ class Favorites extends Component {
       <>
         {myFavorites.map(favorite => {
           return (
-            <div>
-              {favorite.name}
-              {favorite.image}
-            </div>
+            <Span>
+              <h2>{favorite.name}</h2>
+              <img src={favorite.image} alt="img" />
+            </Span>
           );
         })}
       </>
