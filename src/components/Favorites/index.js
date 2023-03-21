@@ -1,23 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Span } from './style';
+import { Span, Datalist } from './style';
 
 const Favorites = props => {
   return (
     <>
-      {/* verificar no funciona datalist */}
-      {/* <input list="browsers" name="myBrowser" />
-      <datalist id="ordenamiento">
+      <input list="ordenamiento" name="ordenamiento" />
+      <Datalist id="ordenamiento">
         <option value="Ascendente" />
         <option value="Descendente" />
-      </datalist>
-      <input list="browsers" name="myBsrowser" />
-      <datalist id="filtrado">
+      </Datalist>
+      <input list="filtrado" name="filtrado" />
+      <Datalist id="filtrado">
         <option value="Male">Male</option>
         <option value="Female">Female</option>
         <option value="Genderless">Genderless</option>
         <option value="unknown">unknown</option>
-      </datalist> */}
+      </Datalist>
       {props.myFavorites.map(favorite => (
         <Span>
           <h2>{favorite.name}</h2>

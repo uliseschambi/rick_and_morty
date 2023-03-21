@@ -16,8 +16,9 @@ export const Img = styled.img`
 `;
 
 export const H2 = styled.h2`
-  color: #1fd0b8;
-  -webkit-text-stroke: 1px #c5ea63;
+  color: #ccff33;
+  -webkit-text-stroke: 0.5px #34a0a4;
+  letter-spacing: 1px;
 `;
 
 export const Button = styled.button`

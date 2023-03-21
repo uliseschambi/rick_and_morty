@@ -12,7 +12,7 @@ export const DivContainer = styled.div`
 export const DivError = styled.div`
   visibility: ${props => (props.visibility ? 'hidden' : 'visible')};
   font-size: x-small;
-  color: white;
+  color: #ccff33;
   margin: 15px 0 4px 0;
 `;
 
