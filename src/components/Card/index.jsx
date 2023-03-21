@@ -4,7 +4,6 @@ import { Span, Img, H2, Button } from './style';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// function Card({ id, name, species, gender, image, onClose, myFavorites, deleteFavorite, addFavorite })
 function Card(props) {
   const [isFav, setIsFav] = useState(false);
 
@@ -23,6 +22,7 @@ function Card(props) {
         });
   };
 
+  // El hook useEffect es solo para componentes funcionales. El método componentDidUpdate es solo para componentes de clases.
   useEffect(() => {
     props.myFavorites.forEach(favorite => {
       if (favorite.id === props.id) setIsFav(true);
