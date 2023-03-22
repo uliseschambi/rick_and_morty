@@ -6,7 +6,7 @@ const getCharById = (res, ID) => {
     .then(response => response.data)
     .then(data => {
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      return res.end(
+      res.end(
         JSON.stringify({
           id: data.id,
           image: data.image,
@@ -18,7 +18,7 @@ const getCharById = (res, ID) => {
     })
     .catch(error => {
       res.writeHead(500, { 'Content-Type': 'text/plain' });
-      return res.end(error);
+      res.end(error);
     });
 };
 

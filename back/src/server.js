@@ -13,7 +13,7 @@ http
 
     if (req.url.includes('detail')) {
       const idURL = req.url.split('/').pop();
-      getCharDetail(res, idURL);
+      return getCharDetail(res, idURL);
     }
 
     res.writeHead(200, { 'Content-Type': 'text/plain' });
