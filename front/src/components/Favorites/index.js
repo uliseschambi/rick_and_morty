@@ -21,7 +21,7 @@ const Favorites = props => {
       </div>
       <div>
         {props.myFavorites.map(favorite => (
-          <Span>
+          <Span key={favorite.id}>
             <h2>{favorite.name}</h2>
             <img src={favorite.image} alt="img" />
           </Span>

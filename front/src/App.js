@@ -16,8 +16,8 @@ function App() {
   const navigate = useNavigate();
 
   const onSearch = id => {
-    // fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    // fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    fetch(`http://localhost:3001/rickandmorty/onsearch/${id}`)
       .then(response => response.json())
       .then(data => {
         if (data.error) alert('No hay personajes con ese ID');

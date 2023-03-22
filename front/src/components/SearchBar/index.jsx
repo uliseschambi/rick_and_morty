@@ -11,7 +11,13 @@ export default function SearchBar({ onSearch }) {
   return (
     <div className={style.container}>
       <input type="search" value={character} onChange={e => handler(e)} className={style.searchBar} />
-      <button onClick={() => onSearch(character)} className={style.button}>
+      <button
+        onClick={() => {
+          onSearch(character);
+          setCharacter('');
+        }}
+        className={style.button}
+      >
         AGREGAR
       </button>
     </div>
