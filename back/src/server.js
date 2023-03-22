@@ -3,14 +3,21 @@ const data = require('./utils/data');
 
 http
   .createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Solucina el problema de seguridad de CORS.
     if (req.url.includes('rickandmorty/character')) {
-      return res.statusCode(200);
+      const idURL = req.url.split('/').pop();
+      // Con doble igual se soluciona el problema de comparar un string con un number.
+      const idData = data.find(character => {
+        return character.id == idURL;
+      });
+      if (idData) {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify(idData));
+      } else {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ error: 'Character not found' }));
+      }
     }
-    return res.statusCode(400);
+    res.end('fuera del if');
   })
   .listen(3001, 'localhost');
-
-//   crear un condicional que pregunte si la url incluye el string rickandmorty/character. En caso de que si lo incluya, obtén el personaje por id que llega por req.url y que coincida con el personaje en el archivo data.js (deberás importar este archivo).
-
-//   Envía como respuesta un JSON con toda la información del personaje.

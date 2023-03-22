@@ -8,3 +8,23 @@ export const Span = styled.span`
 `;
 
 export const Datalist = styled.datalist``;
+
+// para el uso de classname probar con props
+export const Div = styled.div`
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ordenamiento {
+  }
+
+  /* ${props => `
+    .${props.className}{
+      display: inline-block;
+      border: 2px solid hotpink;
+      padding: 16px;
+      margin-bottom: 8px;
+      }
+  `} */
+`;
