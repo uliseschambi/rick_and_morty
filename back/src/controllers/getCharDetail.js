@@ -18,8 +18,7 @@ const getCharDetail = (res, ID) => {
       );
     })
     .catch(error => {
-      res.writeHead(500, { 'Content-Type': 'text/plain' });
-      res.end(error.message);
+      res.writeHead(500, { 'Content-Type': 'text/plain' }).end(error.message);
     });
 };
 

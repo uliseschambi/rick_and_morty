@@ -20,8 +20,17 @@ function App() {
     fetch(`http://localhost:3001/rickandmorty/onsearch/${id}`)
       .then(response => response.json())
       .then(data => {
-        if (data.error) alert('No hay personajes con ese ID');
-        else setCharacters(oldValue => [...oldValue, data]);
+        // con el server http://localhost:3001/
+        setCharacters(oldValue => [...oldValue, data]);
+        // con la api https://rickandmortyapi.com
+        // if (data.name) {
+        // } else {
+        //   window.alert('No hay personajes con ese ID');
+        // }
+      })
+      // con el server http://localhost:3001/
+      .catch(() => {
+        alert('No hay personajes con ese ID');
       });
   };
 

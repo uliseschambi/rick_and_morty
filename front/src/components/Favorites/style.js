@@ -7,24 +7,15 @@ export const Span = styled.span`
   letter-spacing: 1px;
 `;
 
-export const Datalist = styled.datalist``;
+export const Select = styled.select`
+  appearance: none;
+  cursor: pointer;
+  font-size: 1rem; // select no esta heredando
+`;
 
-// para el uso de classname probar con props
 export const Div = styled.div`
   .container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
   }
-
-  .ordenamiento {
-  }
-
-  /* ${props => `
-    .${props.className}{
-      display: inline-block;
-      border: 2px solid hotpink;
-      padding: 16px;
-      margin-bottom: 8px;
-      }
-  `} */
 `;

@@ -8,8 +8,7 @@ function Card(props) {
   const [isFav, setIsFav] = useState(false);
 
   const handleFavorite = () => {
-    // buena práctica utilizar callback en setState ya que se obtiene el newValue de state inmediatamente para ser utilizado.
-    setIsFav(oldValue => !oldValue);
+    // El condicional debería estar en un useEffect.
     isFav
       ? props.deleteFavorite(props.id)
       : props.addFavorite({
@@ -20,6 +19,8 @@ function Card(props) {
           image: props.image,
           onClose: props.onClose,
         });
+    // Utilizar useEffect cuando cambia un estado.
+    setIsFav(!isFav);
   };
 
   // El hook useEffect es solo para componentes funcionales. El método componentDidUpdate es solo para componentes de clases.
@@ -60,5 +61,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
 // connect funciona tanto para componentes funcionales como para componentes de clase.
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
