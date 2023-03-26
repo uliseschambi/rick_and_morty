@@ -3,23 +3,16 @@ import { connect } from 'react-redux';
 import { Div, Span, Select } from './style';
 import { filterCards, orderCards } from '../../redux/actions';
 
-const Favorites = props => {
-  const order = e => {
-    if (e.target.value === 'Ascendente') props.orderCards('Ascendente');
-    if (e.target.value === 'Descendente') props.orderCards('Descendente');
-  };
-  const filter = e => {
-    if (e.target.value === 'Male') props.filterCards('Male');
-    if (e.target.value === 'Female') props.filterCards('Female');
-  };
+const Favorites = ({ myFavorites, orderCards, filterCards }) => {
   return (
     <>
       <Div className="container">
-        <Select name="order" onChange={order}>
+        <Select name="order" onChange={e => orderCards(e.target.value)}>
           <option value="Ascendente">Ascendente</option>
           <option value="Descendente">Descendente</option>
         </Select>
-        <Select name="filter" onChange={filter}>
+        <Select name="filter" onChange={e => filterCards(e.target.value)}>
+          <option value="Every">Every</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Genderless">Genderless</option>
@@ -28,7 +21,7 @@ const Favorites = props => {
       </Div>
       <div>
         {/* {console.log(props.myFavorites)} */}
-        {props.myFavorites.map(favorite => (
+        {myFavorites.map(favorite => (
           <Span key={favorite.id}>
             <h2>{favorite.name}</h2>
             <img src={favorite.image} alt="img" />
