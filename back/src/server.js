@@ -1,3 +1,4 @@
+require('dotenv').config();
 const http = require('http');
 const getCharById = require('./controllers/getCharById');
 const getCharDetail = require('./controllers/getCharDetail');

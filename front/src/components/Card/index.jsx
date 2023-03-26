@@ -25,10 +25,10 @@ function Card(props) {
 
   // El hook useEffect es solo para componentes funcionales. El método componentDidUpdate es solo para componentes de clases.
   useEffect(() => {
-    props.myFavorites.forEach(favorite => {
+    props.allCharacters.forEach(favorite => {
       if (favorite.id === props.id) setIsFav(true);
     });
-  }, [props.myFavorites]);
+  }, [props.allCharacters]);
 
   return (
     <Span>
@@ -46,7 +46,7 @@ function Card(props) {
 
 function mapStateToProps(state) {
   return {
-    myFavorites: state.myFavorites,
+    allCharacters: state.allCharacters,
   };
 }
 

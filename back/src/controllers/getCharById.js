@@ -1,8 +1,10 @@
 const axios = require('axios');
+const { KEY, URL } = process.env;
 
 const getCharById = (res, ID) => {
   axios
-    .get(`https://rickandmortyapi.com/api/character/${ID}`)
+    // .get(`https://rickandmortyapi.com/api/character/${ID}`)
+    .get(`${URL}/character/${ID}?key=${KEY}`) // api henry
     .then(({ data }) => {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(
