@@ -16,6 +16,8 @@ function App() {
   const navigate = useNavigate();
 
   const onSearch = id => {
+    if (characters.find(character => character.id === id)) return alert('Personaje repetido');
+
     fetch(`http://localhost:3001/rickandmorty/onsearch/${id}`)
       .then(response => response.json())
       .then(data => {

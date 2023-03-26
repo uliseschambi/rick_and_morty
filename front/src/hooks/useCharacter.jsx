@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { getCharacterDetail, cleanDetail } from '../redux/actions';
 
 const useCharacter = () => {
-  const dispatch = useDispatch();
   const { detailId } = useParams();
+  const dispatch = useDispatch();
   const character = useSelector(state => state.characterDetail);
+
   useEffect(() => {
     dispatch(getCharacterDetail(detailId));
-
     return () => {
       dispatch(cleanDetail());
     };

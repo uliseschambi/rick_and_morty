@@ -1,8 +1,9 @@
-import { ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER } from './actions';
+import { ADD_FAVORITE, DELETE_FAVORITE, GET_CHARACTER_DETAIL, CLEAN_DETAIL, FILTER, ORDER } from './actions';
 
 const initialState = {
   myFavorites: [],
   allCharacters: [],
+  characterDetail: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,18 @@ const reducer = (state = initialState, action) => {
         allCharacters: state.allCharacters.filter(favorite => {
           return favorite.id !== action.payload;
         }),
+      };
+    }
+    case GET_CHARACTER_DETAIL: {
+      return {
+        ...state,
+        characterDetail: action.payload,
+      };
+    }
+    case CLEAN_DETAIL: {
+      return {
+        ...state,
+        characterDetail: {},
       };
     }
     case FILTER: {

@@ -1,27 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import useCharacter from '../../hooks/useCharacter';
 import { Div, H2, Button } from './style';
 import { Link } from 'react-router-dom';
 
 const Detail = () => {
-  const { detailId } = useParams();
-  const [character, setCharacter] = useState({});
-
-  useEffect(() => {
-    fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
-      .then(response => response.json())
-      .then(char => {
-        if (char.name) {
-          setCharacter(char);
-        } else {
-          window.alert('No hay personajes con ese ID');
-        }
-      })
-      .catch(err => {
-        window.alert('No hay personajes con ese ID');
-      });
-    return setCharacter({});
-  }, [detailId]);
+  const character = useCharacter();
 
   if (character.name)
     return (
