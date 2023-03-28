@@ -11,14 +11,18 @@ export const Span = styled.span`
   line-height: 0; /* eliminar el espacio debajo de la imagen. */
 `;
 
-export const Img = styled.img`
-  border-radius: 0 0 30px 30px;
+export const Div = styled.div`
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
 `;
 
 export const H2 = styled.h2`
   color: #ccff33;
   -webkit-text-stroke: 0.5px #34a0a4;
   letter-spacing: 1px;
+  margin: 20px;
+  /* max-width: 110px; */
 `;
 
 export const Button = styled.button`
@@ -26,6 +30,8 @@ export const Button = styled.button`
   color: white;
   border: 2px solid #ccff33;
   border-radius: 30px;
-  width: 2rem;
-  padding: 0.5rem;
+  height: fit-content;
+  width: 35px;
+  padding: 3px;
+  margin: 7px;
 `;

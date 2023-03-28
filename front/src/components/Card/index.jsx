@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as actions from '../../redux/actions';
-import { Span, Img, H2, Button } from './style';
+import { Span, Div, H2, Button } from './style';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -32,14 +32,18 @@ function Card(props) {
 
   return (
     <Span>
-      {isFav ? <button onClick={handleFavorite}>❤️</button> : <button onClick={handleFavorite}>🤍</button>}
-      <Button onClick={() => props.onClose(props.id)}>X</Button>
+      <Div>
+        {isFav ? <button onClick={handleFavorite}>❤️</button> : <button onClick={handleFavorite}>🤍</button>}
+        <Button onClick={() => props.onClose(props.id)}>X</Button>
+      </Div>
       <Link to={`/detail/${props.id}`}>
         <H2>{props.name}</H2>
       </Link>
-      <H2>{props.species}</H2>
-      <H2>{props.gender}</H2>
-      <Img src={props.image} alt="Here should be the img of a character card" />
+      <img src={props.image} alt="Here should be the img of a character card" />
+      <Div>
+        <H2>{props.species}</H2>
+        <H2>{props.gender}</H2>
+      </Div>
     </Span>
   );
 }

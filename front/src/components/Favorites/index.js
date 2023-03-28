@@ -1,18 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Div, Span, Select } from './style';
+import { Div, Span, Select, Img } from './style';
 import { filterCards, orderCards } from '../../redux/actions';
 
 const Favorites = ({ myFavorites, orderCards, filterCards }) => {
   return (
     <>
-      <Div className="container">
+      <Div className="select">
         <Select name="order" onChange={e => orderCards(e.target.value)}>
           <option value="Ascendente">Ascendente</option>
           <option value="Descendente">Descendente</option>
         </Select>
         <Select name="filter" onChange={e => filterCards(e.target.value)}>
-          <option value="Every">Every</option>
+          <option value="All">All</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Genderless">Genderless</option>
@@ -20,11 +20,10 @@ const Favorites = ({ myFavorites, orderCards, filterCards }) => {
         </Select>
       </Div>
       <div>
-        {/* {console.log(props.myFavorites)} */}
         {myFavorites.map(favorite => (
           <Span key={favorite.id}>
             <h2>{favorite.name}</h2>
-            <img src={favorite.image} alt="img" />
+            <Img src={favorite.image} alt="img" />
           </Span>
         ))}
       </div>

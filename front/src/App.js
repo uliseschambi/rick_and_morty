@@ -16,18 +16,17 @@ function App() {
   const navigate = useNavigate();
 
   const onSearch = id => {
-    if (characters.find(character => character.id === id)) return alert('Personaje repetido');
+    if (!id) return alert('Ingrese un ID de personaje por favor.');
+    if (characters.find(character => character.id === id)) return alert('Personaje repetido, ingrese otro ID por favor.');
 
     fetch(`http://localhost:3001/rickandmorty/onsearch/${id}`)
       .then(response => response.json())
       .then(data => {
-        setCharacters(oldValue => [...oldValue, data]);
-        // con la api https://rickandmortyapi.com
-        // if (data.name) {
-        //   setCharacters(oldValue => [...oldValue, data]);
-        // } else {
-        //   window.alert('No hay personajes con ese ID');
-        // }
+        if (data.name) {
+          setCharacters(oldValue => [...oldValue, data]);
+        } else {
+          window.alert('No hay personajes con ese ID');
+        }
       })
       .catch(() => {
         alert('No hay personajes con ese ID');

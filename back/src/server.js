@@ -1,24 +1,16 @@
 require('dotenv').config();
-const http = require('http');
-const getCharById = require('./controllers/getCharById');
-const getCharDetail = require('./controllers/getCharDetail');
+const express = require('express');
+const server = express();
+const PORT = 3001;
+const router = require('./routes');
 
-http
-  .createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.setHeader('Access-Control-Allow-Headers', '*');
-    // res.setHeader('Access-Control-Expose-Headers', '*');
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  next();
+});
+server.use(express.json());
+server.use('/', router);
 
-    if (req.url.includes('onsearch')) {
-      const ID = req.url.split('/').pop();
-      return getCharById(res, ID);
-    }
-
-    if (req.url.includes('detail')) {
-      const ID = req.url.split('/').pop();
-      return getCharDetail(res, ID);
-    }
-
-    res.writeHead(200, { 'Content-Type': 'text/plain' }).end('okay');
-  })
-  .listen(3001, 'localhost');
+server.listen(PORT, () => {
+  console.log('Server raised in port ' + PORT);
+});
