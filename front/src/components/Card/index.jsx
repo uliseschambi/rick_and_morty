@@ -34,7 +34,7 @@ function Card(props) {
     <Span>
       <Div>
         {isFav ? <button onClick={handleFavorite}>❤️</button> : <button onClick={handleFavorite}>🤍</button>}
-        <Button onClick={() => props.onClose(props.id)}>X</Button>
+        {props.onClose && <Button onClick={() => props.onClose(props.id)}>X</Button>}
       </Div>
       <Link to={`/detail/${props.id}`}>
         <H2>{props.name}</H2>
@@ -55,6 +55,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+  // se pasa dispatch entre funciones
   return {
     addFavorite: function (character) {
       dispatch(actions.addFavorite(character));

@@ -15,6 +15,7 @@ favRouter.get('/', async (req, res) => {
 
 favRouter.post('/', async (req, res) => {
   try {
+    console.log(req.body.adfasdf);
     res.status(200).json(await postFavorite(req));
   } catch (error) {
     res.status(500).json({ error: error.message });

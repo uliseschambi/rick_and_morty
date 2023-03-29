@@ -6,16 +6,40 @@ export const FILTER = 'FILTER';
 export const ORDER = 'ORDER';
 
 export const addFavorite = character => {
-  return {
-    type: ADD_FAVORITE,
-    payload: character,
+  return function (dispatch) {
+    fetch('http://localhost:3001/rickandmorty/fav', {
+      method: 'POST',
+      body: JSON.stringify(character),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(() => {
+        dispatch({
+          type: ADD_FAVORITE,
+          payload: character,
+        });
+      })
+      .catch(() => {
+        alert('No pudo agregarse el favorito, intente de nuevo por favor.');
+      });
   };
 };
 
 export const deleteFavorite = id => {
-  return {
-    type: DELETE_FAVORITE,
-    payload: id,
+  return function (dispatch) {
+    fetch(`http://localhost:3001/rickandmorty/fav`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        dispatch({
+          type: DELETE_FAVORITE,
+          payload: id,
+        });
+      })
+      .catch(() => {
+        alert('No pudo eliminarse el favorito, intente de nuevo por favor.');
+      });
   };
 };
 
