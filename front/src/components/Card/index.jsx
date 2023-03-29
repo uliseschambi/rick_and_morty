@@ -17,7 +17,7 @@ function Card(props) {
           species: props.species,
           gender: props.gender,
           image: props.image,
-          onClose: props.onClose,
+          // onClose: props.onClose,
         });
     // Utilizar useEffect cuando cambia un estado.
     setIsFav(!isFav);
