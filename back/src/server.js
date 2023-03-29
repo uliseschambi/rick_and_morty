@@ -8,9 +8,9 @@ const PORT = process.env.PORT || 3001;
 const server = express();
 
 // middlewares
-server.use(cors());
-server.use(morgan('dev'));
-server.use(express.json());
+server.use(cors()); // seguridad
+server.use(morgan('dev')); // información de req y res.
+server.use(express.json()); // parsea el json de req.body a obj js.
 server.use('/rickandmorty', router); // server.use(router);
 
 server.listen(PORT, () => {

@@ -1,2 +1,2 @@
-const favs = [];
-export default favs;
+let favs = [];
+module.exports = favs;
