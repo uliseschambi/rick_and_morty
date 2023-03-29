@@ -46,7 +46,7 @@ function App() {
       setAccess(true);
       navigate('/home');
     } else {
-      alert('Por favor ingrese un email o contraseña validos.');
+      alert('Por favor ingrese un email y una contraseña valida.');
     }
   }
 
