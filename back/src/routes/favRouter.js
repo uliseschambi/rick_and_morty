@@ -7,7 +7,7 @@ const favRouter = Router();
 
 favRouter.get('/', async (req, res) => {
   try {
-    res.status(200).json(await getFavorite(req));
+    res.status(200).json(await getFavorite());
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -15,7 +15,6 @@ favRouter.get('/', async (req, res) => {
 
 favRouter.post('/', async (req, res) => {
   try {
-    console.log(req.body.adfasdf);
     res.status(200).json(await postFavorite(req));
   } catch (error) {
     res.status(500).json({ error: error.message });

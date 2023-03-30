@@ -21,14 +21,14 @@ export const addFavorite = character => {
         });
       })
       .catch(() => {
-        alert('No pudo agregarse el favorito, intente de nuevo por favor.');
+        alert('El favorito no se agregó, intente de nuevo por favor.');
       });
   };
 };
 
 export const deleteFavorite = id => {
   return function (dispatch) {
-    fetch(`http://localhost:3001/rickandmorty/fav`, {
+    fetch(`http://localhost:3001/rickandmorty/fav/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -38,7 +38,7 @@ export const deleteFavorite = id => {
         });
       })
       .catch(() => {
-        alert('No pudo eliminarse el favorito, intente de nuevo por favor.');
+        alert('El favorito no se eliminó, intente de nuevo por favor.');
       });
   };
 };

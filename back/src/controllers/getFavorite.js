@@ -1,6 +1,6 @@
 let favs = require('../utils/favs');
 
-const postFavorite = async req => {
+const postFavorite = async () => {
   return favs;
 };
 
