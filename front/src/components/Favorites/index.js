@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Div, Span, Select, Img } from './style';
 import { filterCards, orderCards } from '../../redux/actions';
 
-const Favorites = ({ myFavorites, onClose, orderCards, filterCards }) => {
+const Favorites = ({ myFavorites, orderCards, filterCards }) => {
   return (
     <>
       <Div className="select">
@@ -22,7 +22,7 @@ const Favorites = ({ myFavorites, onClose, orderCards, filterCards }) => {
       </Div>
       <>
         {myFavorites.map(({ id, name, species, gender, image }) => (
-          <Card key={id} id={id} name={name} species={species} gender={gender} image={image} onClose={onClose} />
+          <Card key={id} id={id} name={name} species={species} gender={gender} image={image} />
         ))}
       </>
       {/* <div>
