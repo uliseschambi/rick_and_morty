@@ -5,6 +5,8 @@ const deleteFavorite = require('../controllers/deleteFavorite');
 
 const favRouter = Router();
 
+// Nunca pasar res o req completo.
+// El Handler no sabe lo que hace el Controller.
 favRouter.get('/', async (req, res) => {
   try {
     res.status(200).json(await getFavorite());
@@ -13,9 +15,9 @@ favRouter.get('/', async (req, res) => {
   }
 });
 
-favRouter.post('/', async (req, res) => {
+favRouter.post('/', async ({ body }, res) => {
   try {
-    res.status(200).json(await postFavorite(req));
+    res.status(200).json(await postFavorite(body));
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -23,7 +25,8 @@ favRouter.post('/', async (req, res) => {
 
 favRouter.delete('/:id', async (req, res) => {
   try {
-    res.status(200).json(await deleteFavorite(req));
+    const { id } = req.params;
+    res.status(200).json(await deleteFavorite(id));
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

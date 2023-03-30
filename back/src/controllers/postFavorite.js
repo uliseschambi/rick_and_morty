@@ -1,7 +1,7 @@
 let favs = require('../utils/favs');
 
-const postFavorite = async req => {
-  return favs.push(req.body);
+const postFavorite = async body => {
+  return favs.push(body);
 };
 
 module.exports = postFavorite;

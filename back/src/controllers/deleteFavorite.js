@@ -1,9 +1,8 @@
 let favs = require('../utils/favs');
 
-const deleteFavorite = async req => {
-  const { id } = req.params;
+const deleteFavorite = async id => {
   const index = favs.findIndex(object => object.id == id);
-  if (index === -1) return [];
+  if (index === -1) throw error;
   else return favs.splice(index, 1);
 };
 
