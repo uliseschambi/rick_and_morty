@@ -1,10 +1,15 @@
-import React from 'react';
-import Card from '../Card';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Div, Span, Select, Img } from './style';
-import { filterCards, orderCards } from '../../redux/actions';
+import Card from '../Card';
+import { Div, Select } from './style';
+import { getFavorites, filterCards, orderCards } from '../../redux/actions';
 
-const Favorites = ({ myFavorites, orderCards, filterCards }) => {
+const Favorites = ({ myFavorites, getFavorites, orderCards, filterCards }) => {
+  // useEffect(() => {
+  //   console.log('useEffect');
+  //   getFavorites();
+  // }, []);
+
   return (
     <>
       <Div className="select">
@@ -44,6 +49,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
+    getFavorites: () => dispatch(getFavorites()),
     filterCards: gender => dispatch(filterCards(gender)),
     orderCards: id => dispatch(orderCards(id)),
   };

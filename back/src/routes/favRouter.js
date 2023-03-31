@@ -24,8 +24,8 @@ favRouter.post('/', async ({ body }, res) => {
 });
 
 favRouter.delete('/:id', async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     res.status(200).json(await deleteFavorite(id));
   } catch (error) {
     res.status(500).json({ error: error.message });

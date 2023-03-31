@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-export const Span = styled.span`
-  display: inline-block;
-  color: #ccff33;
-  -webkit-text-stroke: 0.5px #34a0a4;
-  letter-spacing: 1px;
-  background-image: linear-gradient(to right, #0c94f5, #b234e9);
-  background-blend-mode: hard-light;
-  border: 2px solid grey;
-  margin: 10px;
-  text-align: center;
-  border-radius: 30px;
-  line-height: 0; /* eliminar el espacio debajo de la imagen. */
-`;
+// export const Span = styled.span`
+//   display: inline-block;
+//   color: #ccff33;
+//   -webkit-text-stroke: 0.5px #34a0a4;
+//   letter-spacing: 1px;
+//   background-image: linear-gradient(to right, #0c94f5, #b234e9);
+//   background-blend-mode: hard-light;
+//   border: 2px solid grey;
+//   margin: 10px;
+//   text-align: center;
+//   border-radius: 30px;
+//   line-height: 0; /* eliminar el espacio debajo de la imagen. */
+// `;
 
 export const Select = styled.select`
   appearance: none;
@@ -26,9 +26,9 @@ export const Select = styled.select`
   margin: 10px;
 `;
 
-export const Img = styled.img`
-  border-radius: 0 0 30px 30px;
-`;
+// export const Img = styled.img`
+//   border-radius: 0 0 30px 30px;
+// `;
 
 export const Div = styled.div`
   .select {
