@@ -5,10 +5,10 @@ import { Div, Select } from './style';
 import { getFavorites, filterCards, orderCards } from '../../redux/actions';
 
 const Favorites = ({ myFavorites, getFavorites, orderCards, filterCards }) => {
-  // useEffect(() => {
-  //   console.log('useEffect');
-  //   getFavorites();
-  // }, []);
+  useEffect(() => {
+    // Trae favoritos solo si no tiene favoritos.
+    if (!myFavorites.length) getFavorites();
+  }, []);
 
   return (
     <>

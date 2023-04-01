@@ -1,6 +1,6 @@
 const { favs } = require('../utils/favs');
 
-const updateFavorite = (id, body) => {
+const updateFavorite = async (id, body) => {
   const fav = favs.find(fav => fav.id == id);
 
   if (!fav) throw Error('ID not found.');
