@@ -55,9 +55,15 @@ const reducer = (state = initialState, action) => {
     }
     case ORDER: {
       // sort() modifica el array original
-      if (action.payload === 'Ascendente') return { ...state, myFavorites: [...state.allCharacters].sort((character1, character2) => character1.id - character2.id) };
-      if (action.payload === 'Descendente') return { ...state, myFavorites: [...state.allCharacters].sort((character1, character2) => character1.id - character2.id).reverse() };
-      break;
+      return {
+        ...state,
+        myFavorites:
+          action.payload === 'Ascendente'
+            ? [...state.allCharacters].sort((char1, char2) => char1.id - char2.id)
+            : action.payload === 'Descendente'
+            ? [...state.allCharacters].sort((char1, char2) => char1.id - char2.id).reverse()
+            : state.allCharacters,
+      };
     }
     default:
       return { ...state };

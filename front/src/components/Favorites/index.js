@@ -25,19 +25,9 @@ const Favorites = ({ myFavorites, getFavorites, orderCards, filterCards }) => {
           <option value="unknown">unknown</option>
         </Select>
       </Div>
-      <>
-        {myFavorites.map(({ id, name, species, gender, image }) => (
-          <Card key={id} id={id} name={name} species={species} gender={gender} image={image} />
-        ))}
-      </>
-      {/* <div>
-        {myFavorites.map(favorite => (
-          <Span key={favorite.id}>
-            <h2>{favorite.name}</h2>
-            <Img src={favorite.image} alt="img" />
-          </Span>
-        ))}
-      </div> */}
+      {myFavorites.map(({ id, name, species, gender, image }) => (
+        <Card key={id} id={id} name={name} species={species} gender={gender} image={image} />
+      ))}
     </>
   );
 };

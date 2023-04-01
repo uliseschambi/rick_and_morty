@@ -4,4 +4,4 @@ const getFavorites = async () => {
   return obj.favs;
 };
 
-module.exports = getFavorite;
+module.exports = getFavorites;

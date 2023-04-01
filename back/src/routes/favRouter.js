@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const getFavorites = require('../controllers/getFavorite');
-const postFavorite = require('../controllers/postFavorite');
+const getFavorites = require('../controllers/getFavorites');
+const createFavorite = require('../controllers/createFavorite');
 const updateFavorite = require('../controllers/updateFavorite');
 const deleteFavorite = require('../controllers/deleteFavorite');
 
@@ -16,9 +16,11 @@ favRouter.get('/', async (req, res) => {
   }
 });
 
-favRouter.post('/', async ({ body }, res) => {
+favRouter.post('/', async (req, res) => {
+  const { id, name, species, gender, image } = req.body;
   try {
-    res.status(200).json(await postFavorite(body));
+    const newFavorite = await createFavorite({ id, name, species, gender, image });
+    res.status(200).json(newFavorite);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
