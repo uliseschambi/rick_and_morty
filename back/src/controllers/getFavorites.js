@@ -1,6 +1,6 @@
 const obj = require('../utils/favs');
 
-const getFavorite = async () => {
+const getFavorites = async () => {
   return obj.favs;
 };
 

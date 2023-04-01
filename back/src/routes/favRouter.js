@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const getFavorite = require('../controllers/getFavorite');
+const getFavorites = require('../controllers/getFavorite');
 const postFavorite = require('../controllers/postFavorite');
 const updateFavorite = require('../controllers/updateFavorite');
 const deleteFavorite = require('../controllers/deleteFavorite');
@@ -10,7 +10,7 @@ const favRouter = Router();
 // El Handler no sabe lo que hace el Controller.
 favRouter.get('/', async (req, res) => {
   try {
-    res.status(200).json(await getFavorite());
+    res.status(200).json(await getFavorites());
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
