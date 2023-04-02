@@ -48,9 +48,12 @@ const reducer = (state = initialState, action) => {
     case FILTER: {
       return {
         ...state,
-        myFavorites: state.allCharacters.filter(favorite => {
-          return favorite.gender === action.payload;
-        }),
+        myFavorites:
+          action.payload === 'All'
+            ? state.allCharacters
+            : state.allCharacters.filter(favorite => {
+                return favorite.gender === action.payload;
+              }),
       };
     }
     case ORDER: {
@@ -59,9 +62,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         myFavorites:
           action.payload === 'Ascendente'
-            ? [...state.allCharacters].sort((char1, char2) => char1.id - char2.id)
+            ? [...state.myFavorites].sort((char1, char2) => char1.id - char2.id)
             : action.payload === 'Descendente'
-            ? [...state.allCharacters].sort((char1, char2) => char1.id - char2.id).reverse()
+            ? [...state.myFavorites].sort((char1, char2) => char1.id - char2.id).reverse()
             : state.allCharacters,
       };
     }

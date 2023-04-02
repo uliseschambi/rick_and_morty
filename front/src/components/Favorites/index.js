@@ -8,17 +8,23 @@ const Favorites = ({ myFavorites, getFavorites, orderCards, filterCards }) => {
   useEffect(() => {
     // Trae favoritos solo si no tiene favoritos.
     if (!myFavorites.length) getFavorites();
+    filterCards('All');
+    orderCards('Ascendente');
   }, []);
 
   return (
     <>
       <Div className="select">
         <Select name="order" onChange={e => orderCards(e.target.value)}>
-          <option value="Ascendente">Ascendente</option>
+          <option value="Ascendente" selected>
+            Ascendente
+          </option>
           <option value="Descendente">Descendente</option>
         </Select>
         <Select name="filter" onChange={e => filterCards(e.target.value)}>
-          <option value="All">All</option>
+          <option value="All" selected>
+            All
+          </option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Genderless">Genderless</option>
