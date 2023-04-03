@@ -1,19 +1,19 @@
-const obj = require('../utils/favs');
-// traigo el objeto para poder pisar a favs. Traigo favs si uso un método(splice) que cambie un elemento (prop).
-let { favs } = obj;
+const obj = require('../utils/favs'); // traigo el objeto para poder pisar a favs.
+const { favs } = obj; // este favs contiene oldValues
 
 const deleteFavorite = async id => {
+  // splice() es un método mas seguro para eliminar.
   // const index = favs.findIndex(object => object.id == id);
   // if (index === -1) throw Error('ID not found');
   // else return favs.splice(index, 1);
 
-  if (!favs.find(fav => fav.id == id)) throw Error('ID not found');
+  const fav = obj.favs.find(fav => fav.id == id);
 
-  favs = favs.filter(f => f.id != id);
+  if (!fav) throw Error('ID not found');
 
-  obj.favs = favs;
+  obj.favs = obj.favs.filter(f => f.id != id);
 
-  return obj.favs;
+  return fav;
 };
 
 module.exports = deleteFavorite;

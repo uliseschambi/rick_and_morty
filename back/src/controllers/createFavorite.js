@@ -1,10 +1,11 @@
 const obj = require('../utils/favs');
-let { favs } = obj;
+const { favs } = obj; // este favs contiene oldValues
 
 const createFavorite = async favorite => {
+  // crear un id.
   const { id, name, species, gender, image } = favorite;
 
-  if (!id || !name || !species) throw Error('Faltan datos.');
+  if (!name || !species) throw Error('Faltan datos.');
 
   const newFavorite = {
     id,
@@ -14,8 +15,7 @@ const createFavorite = async favorite => {
     image: image ? image : null,
   };
 
-  favs.push(newFavorite);
-  obj.favs = favs;
+  obj.favs.push(newFavorite); // push modifica la referencia de favs, agregar obj.
 
   return newFavorite;
 };

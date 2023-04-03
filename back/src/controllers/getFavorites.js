@@ -1,9 +1,8 @@
-const obj = require('../utils/favs'); // traer el objeto completo
-
-let { favs } = obj; // favs contiene un oldValue
+const obj = require('../utils/favs');
+const { favs } = obj; // este favs contiene oldValues
 
 const getFavorites = async () => {
-  // retornar el objeto la propiedad requeridad.
+  // retornar con el objeto de la propiedad requeridad.
   return obj.favs;
 };
 

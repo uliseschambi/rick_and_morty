@@ -9,7 +9,8 @@ const charRouter = Router();
 charRouter.get('/onsearch/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    res.status(200).json(await getCharById(id));
+    const character = await getCharById(id);
+    res.status(200).json(character);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -17,7 +18,8 @@ charRouter.get('/onsearch/:id', async (req, res) => {
 charRouter.get('/detail/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    res.status(200).json(await getCharDetail(id));
+    const character = await getCharDetail(id);
+    res.status(200).json(character);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
