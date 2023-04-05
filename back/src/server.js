@@ -19,8 +19,10 @@ server.use('*', (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log('Server raised in port ' + PORT);
+  // console.log('Server raised in port ' + PORT);
 });
+
+module.exports = server; // export solo para test
 
 // cors
 // server.use((req, res, next) => {
