@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 const Detail = () => {
   const character = useCharacter();
 
-  if (character.name)
+  // Salvar el error de "cannot read property of undefined" con optional chaining operator.
+  if (character?.name)
     return (
       <>
         <Div>

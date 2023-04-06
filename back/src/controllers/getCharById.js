@@ -2,8 +2,8 @@ const { KEY, URL } = process.env;
 const axios = require('axios');
 
 const getCharById = id => {
+  // axios siempre return una prop llamada data.
   return axios.get(`${URL}/character/${id}?key=${KEY}`)
-  // axios return una prop llamada data.
   .then(({ data }) => {
     return {
       id: data.id,
