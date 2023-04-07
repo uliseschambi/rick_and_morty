@@ -1,10 +1,8 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 const router = require('./routes');
 
-const PORT = process.env.PORT || 3001;
 const server = express();
 
 // MIDDLEWARES
@@ -18,11 +16,7 @@ server.use('*', (req, res) => {
   res.status(404).json({ error: 'URL not found.' });
 });
 
-server.listen(PORT, () => {
-  // console.log('Server raised in port ' + PORT);
-});
-
-module.exports = server; // export solo para test
+module.exports = server;
 
 // cors
 // server.use((req, res, next) => {
