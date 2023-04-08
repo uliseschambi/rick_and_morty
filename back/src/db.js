@@ -21,6 +21,7 @@ Character.belongsToMany(User, {
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
+// las relaciones crean tambien los métodos. ej newUser.addCharacters()
 User.belongsToMany(Character, {
   through: 'Favorite',
   onDelete: 'CASCADE',
@@ -28,12 +29,12 @@ User.belongsToMany(Character, {
 });
 
 Character.belongsToMany(Episode, {
-  through: 'Character_Episode',
+  through: 'Cast',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 Episode.belongsToMany(Character, {
-  through: 'Character_Episode',
+  through: 'Cast',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });

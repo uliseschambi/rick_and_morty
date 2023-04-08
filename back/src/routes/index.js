@@ -1,10 +1,12 @@
 const { Router } = require('express');
-const charRouter = require('./charRouter');
-const favRouter = require('./favRouter');
+const characterRouter = require('./characterRouter');
+const favoriteRouter = require('./favoriteRouter');
+const userRouter = require('./userRouter');
 
 const router = Router();
 
-router.use(charRouter);
-router.use('/fav', favRouter);
+router.use(characterRouter);
+router.use('/fav', favoriteRouter);
+router.use('/user', userRouter);
 
 module.exports = router;

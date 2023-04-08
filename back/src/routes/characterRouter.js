@@ -1,12 +1,13 @@
 const { Router } = require('express');
+const createCharHandler = require('../handlers/createCharHandler');
 const getCharById = require('../controllers/getCharById');
 const getCharDetail = require('../controllers/getCharDetail');
 
-const charRouter = Router();
+const characterRouter = Router();
 
-// Nunca pasar res o req completo.
-// El Handler no sabe lo que hace el Controller.
-charRouter.get('/onsearch/:id', async (req, res) => {
+characterRouter.post('/', createCharHandler);
+
+characterRouter.get('/onsearch/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const character = await getCharById(id);
@@ -15,7 +16,7 @@ charRouter.get('/onsearch/:id', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-charRouter.get('/detail/:id', async (req, res) => {
+characterRouter.get('/detail/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const character = await getCharDetail(id);
@@ -25,4 +26,4 @@ charRouter.get('/detail/:id', async (req, res) => {
   }
 });
 
-module.exports = charRouter;
+module.exports = characterRouter;
