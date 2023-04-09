@@ -14,7 +14,6 @@ const addFavorite = async ({ idUser, email }, { idChar, name, species, gender, i
 
   // pasar a then
   const user = await User.findByPk(idUser);
-
   const character = await Character.findByPk(idChar);
 
   await user.addCharacter(character); // método creado a partir de las relaciones de las tablas

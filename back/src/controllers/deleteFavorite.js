@@ -1,19 +1,16 @@
-const obj = require('../utils/favs'); // traigo el objeto para poder pisar a favs.
-const { favs } = obj; // este favs contiene oldValues
+const { User, Character } = require('../db');
 
-const deleteFavorite = async id => {
-  // splice() es un método mas seguro para eliminar.
-  // const index = favs.findIndex(object => object.id == id);
-  // if (index === -1) throw Error('ID not found');
-  // else return favs.splice(index, 1);
+const deleteFavorite = async ({ idUser, email }, { idChar, name, species, gender, image }) => {
+  if (!idUser || !email) throw new Error('Missing User data.');
+  if (!idChar || !name || !species) throw new Error('Missing Character data.');
 
-  const fav = obj.favs.find(fav => fav.id == id);
+  // pasar a then
+  const user = await User.findByPk(idUser);
+  const character = await Character.findByPk(idChar);
 
-  if (!fav) throw Error('ID not found');
+  await user.removeCharacter(character); // método creado a partir de las relaciones de las tablas
 
-  obj.favs = obj.favs.filter(f => f.id != id);
-
-  return fav;
+  return character;
 };
 
 module.exports = deleteFavorite;

@@ -4,7 +4,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3001; // para el deploy website
 
 conn
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => {
     server.listen(PORT, () => {
       console.log('Listening on PORT', PORT);
